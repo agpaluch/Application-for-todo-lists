@@ -1,0 +1,6 @@
+
+create table LANGUAGES (
+    id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    welcomeMsg VARCHAR(100) NOT NULL,
+    code VARCHAR(3)
+);
