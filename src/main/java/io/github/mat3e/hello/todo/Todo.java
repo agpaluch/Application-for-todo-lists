@@ -3,10 +3,7 @@ package io.github.mat3e.hello.todo;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -19,6 +16,11 @@ class Todo {
 
     @NotNull
     private String text;
+
+    @ManyToOne
+    @JoinColumn(name = "dayId")
+    private DayOfWeek dayOfWeek;
+
 
     private boolean done;
 
