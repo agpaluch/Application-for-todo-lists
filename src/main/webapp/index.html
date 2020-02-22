@@ -29,13 +29,36 @@
 <main>
 
     <div id="welcome" style="text-align: center">
+        <h6>Choose the first day of the week to display</h6>
+    </div>
+
+    <div class="container">
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 p-2">
+                <select class="custom-select" id="selectDay"></select>
+            </div>
+
+            <div class="col-md-4 p-2">
+                <select class="custom-select" id="selectMonth"></select>
+            </div>
+
+            <div class="col-md-4 p-2">
+                <select class="custom-select" id="selectYear"></select>
+            </div>
+
+        </div>
+    </div>
+
+
+<!--    <div id="welcome" style="text-align: center">
         <h1>Introduce yourself</h1>
     </div>
     <form id="welcomeForm" class="pure-form pure-g pure-form-aligned">
         <input class="pure-input-rounded pure-u-1" name="name" placeholder="name">
         <fieldset id="langs" class="pure-u-1 pure-control-group">Loading...</fieldset>
         <button id="btn" class="pure-button pure-button-primary pure-u-1">Submit</button>
-    </form>
+    </form>-->
 
 
     <div class="container">
@@ -71,6 +94,7 @@
                                                </div>-->
 
                         </fieldset>
+                        <div></div>
 
                         <!--               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                                            card's content.</p>-->
@@ -212,21 +236,19 @@
         </div>
     </div>
 
-
-
-
     <!-- Optional JavaScript-->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
     <script src="webjars/popper.js/1.16.0/popper.min.js"></script>
     <script src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
+    <!--Prepare date selection-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="dateSelection.js"></script>
+
 </main>
 
 <script>
-
-
-
 
     (function () {
         const API_URL = 'http://localhost:8080/api';
@@ -262,6 +284,7 @@
                         .catch(console.warn);
                 });
 
+
             })
         })();
 
@@ -279,6 +302,9 @@
 
             checkbox.type = 'checkbox';
             checkbox.checked = todo.done;
+            if (checkbox.checked){
+                label.classList.add('done');
+            }
             checkbox.addEventListener('click',
                 (event) => {
                     event.preventDefault();
@@ -286,11 +312,19 @@
                         .then(processOkResponse)
                         .then(updatedTodo => checkbox.checked = !!updatedTodo.done)
                         .catch(console.warn);
+                        label.classList.toggle('done');
+                 /*  if (checkbox.checked){
+                        label.classList.add('done');
+                    } else {
+                           label.classList.remove('done');
+                    }*/
+
                 });
 
             divForm.appendChild(checkbox);
             divForm.appendChild(label);
             label.appendChild(document.createTextNode(` ${todo.text}`));
+
             document.getElementById('allTodos-'.concat(todo.day.toLowerCase())).appendChild(divForm);
 
         }

@@ -1,8 +1,10 @@
 
-
+body {
+    background-color: whitesmoke;
+}
 
 .jumbotron {
-    background: royalblue;
+    background: mediumpurple;
 }
 
 .jumbotron > .container {
@@ -10,12 +12,26 @@
 }
 
 .card {
-    background-color: lightgreen;
+    background-color: cornflowerblue;
+    height: calc(100% - 1rem);
+    color: white;
 }
 
 .card-title {
     text-align: center;
 }
+
+.btn {
+    background-color: dimgrey;
+    border-color: dimgrey;
+}
+
+.done {
+    text-decoration: line-through;
+    color: lightgrey;
+}
+
+
 /*
 
 !*
