@@ -12,6 +12,10 @@
 .card {
     background-color: lightgreen;
 }
+
+.card-title {
+    text-align: center;
+}
 /*
 
 !*

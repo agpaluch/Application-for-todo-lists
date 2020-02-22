@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.DayOfWeek;
 
 @Entity
 @Table
@@ -17,9 +18,9 @@ class Todo {
     @NotNull
     private String text;
 
-    @ManyToOne
-    @JoinColumn(name = "dayId")
-    private DayOfWeek dayOfWeek;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    private DayOfWeek day;
 
 
     private boolean done;
@@ -32,6 +33,13 @@ class Todo {
 
     }
 
+    public DayOfWeek getDay() {
+        return day;
+    }
+
+    public void setDay(DayOfWeek day) {
+        this.day = day;
+    }
 
     public Integer getId() {
         return Id;

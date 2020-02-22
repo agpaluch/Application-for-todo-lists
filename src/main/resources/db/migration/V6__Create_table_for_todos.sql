@@ -2,10 +2,10 @@ create table TODO
 (
     id         INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
     text VARCHAR(100) NOT NULL,
-    dayId INT UNSIGNED,
-    done BIT,
-    FOREIGN KEY (dayId) REFERENCES DAYS_OF_WEEK(id)
+    day ENUM('MONDAY', 'TUESDAY', 'WEDNESEDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY', 'SUNDAY'),
+   /* day VARCHAR(50),*/
+    done BIT
 );
 
-INSERT INTO TODO (text, dayId, done) VALUES('Done todo', 1, 1);
-INSERT INTO TODO (text, dayId, done) VALUES('Undone todo', 2, 0);
+INSERT INTO TODO (text, day, done) VALUES('Done todo', 'MONDAY', 1);
+INSERT INTO TODO (text, day, done) VALUES('Undone todo', 'TUESDAY', 0);

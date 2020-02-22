@@ -42,20 +42,19 @@
 
         <div class="row justify-content-md-center">
             <div class="col-md-4 px-2">
-                <div class="card my-2">
+                <div class="card my-2" id="monday">
                     <div class="card-body">
                         <h5 class="card-title">Monday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-
-                        <form id="todoForm" class="form-inline">
+                       <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+                        <form id="todoForm-monday" class="form-inline">
                             <div class="row justify-content-center">
-                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText"
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-monday"
                                        placeholder="new to-do">
-                                <button id="addTodo" class="btn btn-primary mt-1">Add</button>
+                                <button class="btn btn-primary mt-1" id="addTodo-monday">Add</button>
                             </div>
                         </form>
 
-                        <fieldset id="allTodos" class="mt-3">
+                        <fieldset id="allTodos-monday" class="mt-3">
                             <!--               <div class="form-check m-1">
                                                <input class="form-check-input" type="checkbox">
                                                <label class="form-check-label">
@@ -75,29 +74,42 @@
 
                         <!--               <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                                            card's content.</p>-->
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+<!--                        <a href="#" class="card-link">Card link</a>
+                        <a href="#" class="card-link">Another link</a>-->
                     </div>
                 </div>
             </div>
             <div class="col-md-4 px-2">
-                <div class="card my-2">
+                <div class="card my-2" id="tuesday">
                     <div class="card-body">
                         <h5 class="card-title">Tuesday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
 
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <form id="todoForm-tuesday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-tuesday"
+                                       placeholder="new to-do">
+                                <button class="btn btn-primary mt-1" id="addTodo-tuesday">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-tuesday" class="mt-3"></fieldset>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 px-2">
-                <div class="card my-2">
+                <div class="card my-2" id="wednesday">
                     <div class="card-body">
                         <h5 class="card-title">Wednesday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+
+                        <form id="todoForm-wednesday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-wednesday"
+                                       placeholder="new to-do">
+                                <button class="btn btn-primary mt-1" id="addTodo-wednesday">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-wednesday" class="mt-3"></fieldset>
                     </div>
                 </div>
             </div>
@@ -105,51 +117,62 @@
         </div>
     </div>
 
+
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-4 px-2">
-                <div class="card my-2">
+                <div class="card my-2" id="thursday">
                     <div class="card-body">
                         <h5 class="card-title">Thursday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
 
-                        <form id="todoForm2" class="form-inline">
+                        <form id="todoForm-thursday" class="form-inline">
                             <div class="row justify-content-center">
-                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText2"
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-thursday"
                                        placeholder="new to-do">
-                                <button id="addTodo2" class="btn btn-primary mt-1">Add</button>
+                                <button id="addTodo-thursday" class="btn btn-primary mt-1">Add</button>
                             </div>
                         </form>
 
-                        <fieldset id="allTodos2" class="mt-3">
+                        <fieldset id="allTodos-thursday" class="mt-3"></fieldset>
 
-
-                        </fieldset>
-
-
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 px-2">
-                <div class="card my-2">
+                <div class="card my-2" id="friday">
                     <div class="card-body">
                         <h5 class="card-title">Friday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                        <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
 
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <form id="todoForm-friday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-friday"
+                                       placeholder="new to-do">
+                                <button id="addTodo-friday" class="btn btn-primary mt-1">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-friday" class="mt-3"></fieldset>
+
                     </div>
                 </div>
             </div>
             <div class="col-md-4 px-2">
-                <div class="card my-2">
+                <div class="card my-2" id="saturday">
                     <div class="card-body">
                         <h5 class="card-title">Saturday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
+                        <!--<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>-->
+                        <form id="todoForm-saturday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-saturday"
+                                       placeholder="new to-do">
+                                <button id="addTodo-saturday" class="btn btn-primary mt-1">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-saturday" class="mt-3"></fieldset>
+
                     </div>
                 </div>
 
@@ -165,32 +188,31 @@
     <div class="container">
         <div class="row justify-content-md-center">
             <div class="col-md-4 px-2">
-                <div class="card my-2">
+                <div class="card my-2" id="sunday">
                     <div class="card-body">
                         <h5 class="card-title">Sunday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
 
-                        <form id="todoForm3" class="form-inline">
+                        <form id="todoForm-sunday" class="form-inline">
                             <div class="row justify-content-center">
-                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText3"
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-sunday"
                                        placeholder="new to-do">
-                                <button id="addTodo3" class="btn btn-primary mt-1">Add</button>
+                                <button id="addTodo-sunday" class="btn btn-primary mt-1">Add</button>
                             </div>
                         </form>
 
-                        <fieldset id="allTodos3" class="mt-3">
+                        <fieldset id="allTodos-sunday" class="mt-3">
 
 
                         </fieldset>
 
 
-                        <a href="#" class="card-link">Card link</a>
-                        <a href="#" class="card-link">Another link</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 
 
     <!-- Optional JavaScript-->
@@ -202,31 +224,46 @@
 </main>
 
 <script>
+
+
+
+
     (function () {
         const API_URL = 'http://localhost:8080/api';
         const TODO_API_URL = `${API_URL}/todos`;
 
-        const todoText = document.getElementById('todoText');
 
         fetch(TODO_API_URL)
             .then(processOkResponse)
             .then(todos => todos.forEach(createNewTodo));
 
-        document.getElementById('addTodo').addEventListener('click', (event) => {
-            event.preventDefault();
-            fetch(TODO_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({text: todoText.value})
+
+        (function(){
+
+            $.each($('.card'), function() {
+                const dayOfWeek = this.id;
+
+                const addTodoButton = document.getElementById('addTodo-'.concat(dayOfWeek));
+                const todoText = document.getElementById('todoText-'.concat(dayOfWeek));
+
+                addTodoButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    fetch(TODO_API_URL, {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({text: todoText.value, day: dayOfWeek.toUpperCase()})
+                    })
+                        .then(processOkResponse)
+                        .then(createNewTodo)
+                        .then(() => todoText.value = '')
+                        .catch(console.warn);
+                });
+
             })
-                .then(processOkResponse)
-                .then(createNewTodo)
-                .then(() => todoText.value = '')
-                .catch(console.warn);
-        });
+        })();
 
 
         function createNewTodo(todo) {
@@ -253,29 +290,12 @@
 
             divForm.appendChild(checkbox);
             divForm.appendChild(label);
-            /*label.appendChild(checkbox);*/
             label.appendChild(document.createTextNode(` ${todo.text}`));
-            document.getElementById('allTodos').appendChild(divForm);
+            document.getElementById('allTodos-'.concat(todo.day.toLowerCase())).appendChild(divForm);
+
         }
 
-        /*      function createNewTodo(todo) {
-                  const label = document.createElement('label');
-                  label.classList.add('pure-checkbox');
-                  const checkbox = document.createElement('input');
-                  checkbox.type = 'checkbox';
-                  checkbox.checked = todo.done;
-                  checkbox.addEventListener('click',
-                      (event) => {
-                          event.preventDefault();
-                          fetch(`${TODO_API_URL}/${todo.id}`, { method: 'PUT' })
-                              .then(processOkResponse)
-                              .then(updatedTodo => checkbox.checked = !!updatedTodo.done)
-                              .catch(console.warn);
-                      });
-                  label.appendChild(checkbox);
-                  label.appendChild(document.createTextNode(` ${todo.text}`));
-                  document.getElementById('allTodos').appendChild(label);
-              }*/
+
 
         initWelcomeForm();
 
@@ -314,7 +334,7 @@
                 <h1>${text}</h1>
             `;
                         welcomeForm.remove();
-                        document.getElementById('todoForm').style.display = 'block';
+                        document.getElementById('todoForm-monday').style.display = 'block';
                     });
             });
         }
