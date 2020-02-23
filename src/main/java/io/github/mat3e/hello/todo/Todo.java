@@ -3,24 +3,27 @@ package io.github.mat3e.hello.todo;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
-import java.time.DayOfWeek;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.time.LocalDate;
+
 
 @Entity
 @Table
 class Todo {
 
     @Id
-    @GeneratedValue(generator="inc")
-    @GenericGenerator(name="inc", strategy = "increment")
+    @GeneratedValue(generator = "inc")
+    @GenericGenerator(name = "inc", strategy = "increment")
     private Integer Id;
 
     @NotNull
     private String text;
 
     @NotNull
-    @Enumerated(EnumType.STRING)
-    private DayOfWeek day;
+    private LocalDate date;
 
 
     private boolean done;
@@ -29,22 +32,22 @@ class Todo {
      * Constructor used by Hibernate.
      */
     @SuppressWarnings("unused")
-    Todo(){
+    Todo() {
 
     }
 
-    public DayOfWeek getDay() {
-        return day;
-    }
-
-    public void setDay(DayOfWeek day) {
-        this.day = day;
-    }
 
     public Integer getId() {
         return Id;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
     public String getText() {
         return text;

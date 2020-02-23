@@ -65,6 +65,12 @@
 			<artifactId>popper.js</artifactId>
 			<version>1.16.0</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.webjars.npm</groupId>
+			<artifactId>js-joda</artifactId>
+			<version>1.10.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>

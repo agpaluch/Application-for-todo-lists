@@ -31,6 +31,7 @@ arrayOfYears.forEach(function (item, index) {
 
 const selectionOfYears = document.getElementById('selectYear');
 const selectionOfMonths = document.getElementById('selectMonth');
+const selectionOfDays = document.getElementById('selectDay');
 
 
 //Create list of days in month
@@ -59,6 +60,12 @@ function daysInMonth() {
         dayList.appendChild(option);
     });
 
+
+    //Take note of the date that is selected and choose monday from that week
+    var selectedDay = selectionOfDays.options[selectionOfDays.selectedIndex];
+
+    console.log(selectedDay, selectedMonth, selectedYear);
+
 }
 
 daysInMonth();
@@ -66,5 +73,6 @@ daysInMonth();
 
 $('#selectMonth').on('change', function () {
         daysInMonth()
+    alert('msg')
     }
 );

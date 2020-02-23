@@ -5,6 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 
@@ -21,10 +25,12 @@ class TodoServlet {
     }
 
 
-    @GetMapping
-    ResponseEntity<List<Todo>> findAllTodos() {
+    @GetMapping("/{milliseconds}")
+    ResponseEntity<List<Todo>> findAllTodos(@PathVariable Long milliseconds) {
         logger.info("Got request");
-        return ResponseEntity.ok(todoRepository.findAll());
+        LocalDate date = LocalDate.ofInstant(Instant.ofEpochMilli(milliseconds), ZoneId.systemDefault());
+        //return ResponseEntity.ok(todoRepository.findAll());
+        return ResponseEntity.ok(todoRepository.findByDate(date));
     }
 
     @PutMapping("/{id}")
@@ -40,6 +46,7 @@ class TodoServlet {
 
 @PostMapping
     ResponseEntity<Todo> saveTodo(@RequestBody Todo todo){
+        logger.info("Got post request");
         return ResponseEntity.ok(todoRepository.save(todo));
     }
 
