@@ -1,5 +1,6 @@
 package io.github.mat3e.hello.todo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -22,7 +23,9 @@ class Todo {
     @NotNull
     private String text;
 
+
     @NotNull
+/*    @JsonFormat(shape = JsonFormat.Shape.NUMBER)*/
     private LocalDate date;
 
 

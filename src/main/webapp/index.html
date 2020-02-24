@@ -29,7 +29,7 @@
 <main>
 
     <div id="welcome" style="text-align: center">
-        <h6>Choose the first day of the week to display</h6>
+        <h6>Choose the date</h6>
     </div>
 
     <div class="container">
@@ -68,7 +68,7 @@
                 <div class="card my-2" id="monday">
                     <div class="card-body">
                         <h5 class="card-title">Monday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" id="subtitle1">Card subtitle</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle1"></h6>
                         <form id="todoForm-monday" class="form-inline">
                             <div class="row justify-content-center">
                                 <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-monday"
@@ -107,7 +107,7 @@
                 <div class="card my-2" id="tuesday">
                     <div class="card-body">
                         <h5 class="card-title">Tuesday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" id="subtitle2">Card subtitle</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle2"></h6>
 
                         <form id="todoForm-tuesday" class="form-inline">
                             <div class="row justify-content-center">
@@ -125,7 +125,7 @@
                 <div class="card my-2" id="wednesday">
                     <div class="card-body">
                         <h5 class="card-title">Wednesday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" id="subtitle3">Card subtitle</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle3"></h6>
 
                         <form id="todoForm-wednesday" class="form-inline">
                             <div class="row justify-content-center">
@@ -150,7 +150,7 @@
                 <div class="card my-2" id="thursday">
                     <div class="card-body">
                         <h5 class="card-title">Thursday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" id="subtitle4">Card subtitle</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle4"></h6>
 
                         <form id="todoForm-thursday" class="form-inline">
                             <div class="row justify-content-center">
@@ -169,7 +169,7 @@
                 <div class="card my-2" id="friday">
                     <div class="card-body">
                         <h5 class="card-title">Friday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" id="subtitle5">Card subtitle</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle5"></h6>
 
                         <form id="todoForm-friday" class="form-inline">
                             <div class="row justify-content-center">
@@ -188,7 +188,7 @@
                 <div class="card my-2" id="saturday">
                     <div class="card-body">
                         <h5 class="card-title">Saturday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" id="subtitle6">Card subtitle</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle6"></h6>
                         <form id="todoForm-saturday" class="form-inline">
                             <div class="row justify-content-center">
                                 <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-saturday"
@@ -217,7 +217,7 @@
                 <div class="card my-2" id="sunday">
                     <div class="card-body">
                         <h5 class="card-title">Sunday</h5>
-                        <h6 class="card-subtitle mb-2 text-muted" id="subtitle7">Card subtitle</h6>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle7"></h6>
                         <form id="todoForm-sunday" class="form-inline">
                             <div class="row justify-content-center">
                                 <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-sunday"
@@ -243,7 +243,6 @@
     <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
     <script src="webjars/popper.js/1.16.0/popper.min.js"></script>
     <script src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <!--  <script src="webjars/npm/js-joda/1.10.1/js/joda.min.js"></script>-->
 
 
     <!--Prepare date selection-->
@@ -318,100 +317,112 @@
             dayList.appendChild(option);
         });
 
-            dayList.selectedIndex = lastSelectedDay;
+        dayList.selectedIndex = lastSelectedDay;
 
-            if (dayList.selectedIndex == -1){
-                dayList.selectedIndex = dayList.childElementCount-1;
-            }
-
-
-
+        if (dayList.selectedIndex == -1) {
+            dayList.selectedIndex = dayList.childElementCount - 1;
+        }
 
     }
 
     daysInMonth();
+    setCurrentDate();
+    fillCardsContent();
+
+    /*    $.each($('.card-subtitle'), function () {
+            let idString = this.id;
+            let count = parseInt(idString.charAt(idString.length - 1)) - 1;
+            let thisDate = addDays(firstDayOfWeek, count);
+            let thisDate = new Date(selectedYear.text, selectedMonth.value, parseInt(selectedDay.text));
+            this.innerHTML = (thisDate.getDate().toString()).concat(' ', arrayOfMonths[thisDate.getMonth()],
+                ' ', thisDate.getFullYear().toString());
+        });*/
+
+
+    function setCurrentDate() {
+        let currentDate = new Date();
+        dayList.selectedIndex = currentDate.getDate();
+        selectionOfMonths.selectedIndex = currentDate.getMonth();
+        selectionOfYears.selectedIndex = selectionOfYears.childElementCount - 1;
+    }
+
 
     var selectedDay = dayList.options[dayList.selectedIndex];
     var selectedYear = selectionOfYears.options[selectionOfYears.selectedIndex];
     var selectedMonth = selectionOfMonths.options[selectionOfMonths.selectedIndex];
 
 
-
-    $.each($('.card-subtitle'), function () {
-        let idString = this.id;
-        let count = parseInt(idString.charAt(idString.length - 1)) - 1;
-        let thisDate = new Date(selectedYear.text, selectedMonth.value, parseInt(selectedDay.text));
-        this.innerHTML = (thisDate.getDate().toString()).concat(' ', arrayOfMonths[thisDate.getMonth()],
-            ' ', thisDate.getFullYear().toString());
-    });
-
-
-
-
     const API_URL = 'http://localhost:8080/api';
     const TODO_API_URL = `${API_URL}/todos`;
 
 
-    $('#selectDay, #selectMonth, #selectYear').on('change', function () {
+    $('#selectDay, #selectMonth, #selectYear').on('change', fillCardsContent);
 
-            lastSelectedDay = dayList.selectedIndex;
 
-            daysInMonth();
+    function fillCardsContent() {
 
+        lastSelectedDay = dayList.selectedIndex;
+
+        daysInMonth();
 
 
         document.querySelectorAll('[id^="allTodos-"]').forEach(s => $(s).empty());
 
-            //Take note of the date that is selected and choose monday from that week
+        //Take note of the date that is selected and choose monday from that week
         var selectedDay = dayList.options[dayList.selectedIndex];
         var selectedYear = selectionOfYears.options[selectionOfYears.selectedIndex];
         var selectedMonth = selectionOfMonths.options[selectionOfMonths.selectedIndex];
 
         const chosenDay = parseInt(selectedDay.text);
-            const chosenDate = new Date(selectedYear.text, selectedMonth.value, chosenDay);
-            console.log(chosenDate);
+        const chosenDate = new Date(selectedYear.text, selectedMonth.value, chosenDay);
 
 
-            var clonedChosenDay = new Date(chosenDate.getTime());
+        var clonedChosenDay = new Date(chosenDate.getTime());
 
-            function addDays(date, days) {
-                const copy = new Date(Number(date));
-                copy.setDate(date.getDate() + days);
-                return copy
-            }
-
-            let add;
-            if (clonedChosenDay.getDay() == 0) {
-                add = -6;
-            } else {
-                add = (-1) * (clonedChosenDay.getDay() - 1);
-            }
-
-            const firstDayOfWeek = addDays(clonedChosenDay, add);
-            const lastDayOfWeek = addDays(new Date(firstDayOfWeek.getTime()), 6);
-
-
-            $.each($('.card-subtitle'), function () {
-                let idString = this.id;
-                let count = parseInt(idString.charAt(idString.length - 1)) - 1;
-                let thisDate = addDays(firstDayOfWeek, count);
-                this.innerHTML = (thisDate.getDate().toString()).concat(' ', arrayOfMonths[thisDate.getMonth()],
-                    ' ', thisDate.getFullYear().toString());
-            });
-            //console.log(new Date('26 January 2014'));
-
-            const firstDayOfWeekMiliseconds = +firstDayOfWeek;
-            //console.log(firstDayOfWeekMiliseconds);
-
-
-            fetch(`${TODO_API_URL}/${firstDayOfWeekMiliseconds}`)
-                .then(processOkResponse)
-                .then(todos => todos.forEach(createNewTodo));
-
-
+        function addDays(date, days) {
+            const copy = new Date(Number(date));
+            copy.setDate(date.getDate() + days);
+            return copy
         }
-    );
 
+        let add;
+        if (clonedChosenDay.getDay() == 0) {
+            add = -6;
+        } else {
+            add = (-1) * (clonedChosenDay.getDay() - 1);
+        }
+
+        const firstDayOfWeek = addDays(clonedChosenDay, add);
+        const lastDayOfWeek = addDays(new Date(firstDayOfWeek.getTime()), 6);
+
+
+        $.each($('.card-subtitle'), function () {
+            let idString = this.id;
+            let count = parseInt(idString.charAt(idString.length - 1)) - 1;
+            let thisDate = addDays(firstDayOfWeek, count);
+            this.innerHTML = (thisDate.getDate().toString()).concat(' ', arrayOfMonths[thisDate.getMonth()],
+                ' ', thisDate.getFullYear().toString());
+            const parentCard = this.parentElement.parentElement;
+            if (thisDate.getTime() === chosenDate.getTime()) {
+                //$(this).parent().parent('.card').css("background-color", "palevioletred");
+                parentCard.classList.add('current');
+            } else {
+                parentCard.classList.remove('current');
+            }
+
+        });
+
+        const firstDayOfWeekMiliseconds = +firstDayOfWeek;
+
+        const API_URL = 'http://localhost:8080/api';
+        const TODO_API_URL = `${API_URL}/todos`;
+
+        fetch(`${TODO_API_URL}/${firstDayOfWeekMiliseconds}`)
+            .then(processOkResponse)
+            .then(todos => todos.forEach(createNewTodo));
+
+
+    }
 
     function createNewTodo(todo) {
         const divForm = document.createElement('div');
@@ -437,27 +448,25 @@
                     .then(updatedTodo => checkbox.checked = !!updatedTodo.done)
                     .catch(console.warn);
                 label.classList.toggle('done');
-                /*                if (checkbox.checked) {
-                                    label.classList.add('done');
-                                } else {
-                                    label.classList.remove('done');
-                                }*/
-
             });
 
         divForm.appendChild(checkbox);
         divForm.appendChild(label);
         label.appendChild(document.createTextNode(` ${todo.text}`));
+        const dayOfTodo = new Date(todo.date).getDay();
 
-        document.getElementById('allTodos-'.concat('monday')).appendChild(divForm);
+        const arrayOfWeekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satruday'];
+        const nameOfDay = (arrayOfWeekDays[dayOfTodo]).toLowerCase();
+        console.log(nameOfDay);
+        document.getElementById('allTodos-'.concat(nameOfDay)).appendChild(divForm);
 
     }
 
 
     //Add new todo
-    (function(){
+    (function () {
 
-        $.each($('.card'), function() {
+        $.each($('.card'), function () {
             const dayOfWeek = this.id;
 
             const addTodoButton = document.getElementById('addTodo-'.concat(dayOfWeek));
@@ -465,7 +474,9 @@
             const dateOfDayString = $(this).children().children('.card-subtitle').html().toString();
             //console.log(new Date('26 January 2014'));
             //console.log(dateOfDay);
-            //const dateOfDay = new Date(dateOfDayString);
+            const dateOfDay = new Date(dateOfDayString);
+            //'2019-01-01'
+            let dateString = formatDate(dateOfDay);
 
             addTodoButton.addEventListener('click', (event) => {
                 event.preventDefault();
@@ -476,7 +487,7 @@
                         'Content-Type': 'application/json'
                     },
 
-                    body: JSON.stringify({text: todoText.value, date: '2019-01-01'})
+                    body: JSON.stringify({text: todoText.value, date: dateString})
                 })
                     .then(processOkResponse)
                     .then(createNewTodo)
@@ -496,136 +507,22 @@
     }
 
 
-    /*   (function () {
-           const API_URL = 'http://localhost:8080/api';
-           const TODO_API_URL = `${API_URL}/todos`;
+    function formatDate(dateToFormat) {
+        var dd = dateToFormat.getDate();
+        var mm = dateToFormat.getMonth() + 1;
+        var yyyy = dateToFormat.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
 
-
-           fetch(TODO_API_URL)
-               .then(processOkResponse)
-               .then(todos => todos.forEach(createNewTodo));
-
-
-           (function(){
-
-               $.each($('.card'), function() {
-                   const dayOfWeek = this.id;
-
-                   const addTodoButton = document.getElementById('addTodo-'.concat(dayOfWeek));
-                   const todoText = document.getElementById('todoText-'.concat(dayOfWeek));
-
-                   addTodoButton.addEventListener('click', (event) => {
-                       event.preventDefault();
-                       fetch(TODO_API_URL, {
-                           method: 'POST',
-                           headers: {
-                               'Accept': 'application/json',
-                               'Content-Type': 'application/json'
-                           },
-                           body: JSON.stringify({text: todoText.value, day: dayOfWeek.toUpperCase()})
-                       })
-                           .then(processOkResponse)
-                           .then(createNewTodo)
-                           .then(() => todoText.value = '')
-                           .catch(console.warn);
-                   });
-
-
-               })
-           })();
-
-
-           function createNewTodo(todo) {
-               const divForm = document.createElement('div');
-               divForm.classList.add('form-check');
-               divForm.classList.add('m-1');
-
-               const label = document.createElement('label');
-               label.classList.add('form-check-label');
-
-               const checkbox = document.createElement('input');
-               checkbox.classList.add('form-check-input');
-
-               checkbox.type = 'checkbox';
-               checkbox.checked = todo.done;
-               if (checkbox.checked){
-                   label.classList.add('done');
-               }
-               checkbox.addEventListener('click',
-                   (event) => {
-                       event.preventDefault();
-                       fetch(`${TODO_API_URL}/${todo.id}`, {method: 'PUT'})
-                           .then(processOkResponse)
-                           .then(updatedTodo => checkbox.checked = !!updatedTodo.done)
-                           .catch(console.warn);
-                           label.classList.toggle('done');
-                    /!*  if (checkbox.checked){
-                           label.classList.add('done');
-                       } else {
-                              label.classList.remove('done');
-                       }*!/
-
-                   });
-
-               divForm.appendChild(checkbox);
-               divForm.appendChild(label);
-               label.appendChild(document.createTextNode(` ${todo.text}`));
-
-               document.getElementById('allTodos-'.concat(todo.day.toLowerCase())).appendChild(divForm);
-
-           }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        return (yyyy + '-' + mm + '-' + dd);
+    }
 
 
 
-           initWelcomeForm();
-
-           function initWelcomeForm() {
-               const CODE_TO_EMOJI = {
-                   'pl': '🇵🇱',
-                   'en': '🇺🇸',
-                   'de': '🇩🇪'
-               };
-               fetch(`${API_URL}/langs`)
-                   .then(processOkResponse)
-                   .then(langArr => {
-                       document.getElementById('langs').innerHTML = langArr.map(lang => `
-                 <label class="pure-radio">
-                   <input type="radio" name="lang" value="${lang.id}">
-                   ${CODE_TO_EMOJI[lang.code]}
-                 </label>
-             `).join('\n');
-                       initWelcomeFormClick();
-                   });
-           }
-
-           function initWelcomeFormClick() {
-               const welcomeForm = document.getElementById('welcomeForm');
-
-               document.getElementById('btn').addEventListener('click', (event) => {
-                   event.preventDefault();
-                   const formObj = {
-                       name: welcomeForm.elements.name.value,
-                       lang: welcomeForm.elements.lang.value
-                   };
-                   fetch(`${API_URL}?${new URLSearchParams(formObj)}`)
-                       .then(response => response.text())
-                       .then((text) => {
-                           document.getElementById('welcome').innerHTML = `
-                   <h1>${text}</h1>
-               `;
-                           welcomeForm.remove();
-                           document.getElementById('todoForm-monday').style.display = 'block';
-                       });
-               });
-           }
-
-           function processOkResponse(response = {}) {
-               if (response.ok) {
-                   return response.json();
-               }
-               throw new Error(`Status not 200 (${response.status})`);
-           }
-       })();*/
 </script>
 </body>
 </html>
