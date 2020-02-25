@@ -253,55 +253,62 @@
 
 <script>
 
-
-    //Create list of months
-    moment.locale('pl'); // sets words language (optional if current locale is to be used)
-    const arrayOfMonths = moment.months();
-
-    const monthList = document.getElementById('selectMonth');
-
-    arrayOfMonths.forEach(function (item, index) {
-        const option = document.createElement('option');
-        option.appendChild(document.createTextNode(item));
-        option.value = (index).toString();
-        monthList.appendChild(option);
-    });
-
-
-    //Create list of years from 2010 until now
-    const yearList = document.getElementById('selectYear');
-    first = new Date(2010, 1, 1).getFullYear();
-    dateNow = new Date();
-    second = dateNow.getFullYear();
-
-    arrayOfYears = Array();
-
-    for (let i = first; i <= second; i++) arrayOfYears.push(i);
-
-    arrayOfYears.forEach(function (item, index) {
-        const option = document.createElement('option');
-        option.appendChild(document.createTextNode(item));
-        option.value = (index + 1).toString();
-        yearList.appendChild(option);
-    });
-
+    moment.locale('pl');
+    createMonthsList();
+    createYearsList();
     const selectionOfYears = document.getElementById('selectYear');
     const selectionOfMonths = document.getElementById('selectMonth');
-
-
-    //Create list of days in month
     const dayList = document.getElementById('selectDay');
 
     let lastSelectedDay = 0;
+    daysInMonth();
+    setCurrentDate();
+    fillCardsContent();
 
+
+    //Create list of month names
+    function createMonthsList(){
+        const arrayOfMonths = moment.months();
+        const monthList = document.getElementById('selectMonth');
+
+        arrayOfMonths.forEach(function (item, index) {
+            const option = document.createElement('option');
+            option.appendChild(document.createTextNode(item));
+            option.value = (index).toString();
+            monthList.appendChild(option);
+        })
+    }
+
+    //Create list of years from 2010 until now
+    function createYearsList() {
+        const yearList = document.getElementById('selectYear');
+        const first = new Date(2010, 1, 1).getFullYear();
+        const dateNow = new Date();
+        const last = dateNow.getFullYear();
+
+        const arrayOfYears = Array();
+
+        for (let i = first; i <= last; i++) arrayOfYears.push(i);
+
+        arrayOfYears.forEach(function (item, index) {
+            const option = document.createElement('option');
+            option.appendChild(document.createTextNode(item));
+            option.value = (index + 1).toString();
+            yearList.appendChild(option);
+        })
+
+    }
+
+
+
+
+    //Create list of days in month
     function daysInMonth() {
 
-        var selectedYear = selectionOfYears.options[selectionOfYears.selectedIndex];
-        var selectedMonth = selectionOfMonths.options[selectionOfMonths.selectedIndex];
+        const selectedYear = selectionOfYears.options[selectionOfYears.selectedIndex];
+        const selectedMonth = selectionOfMonths.options[selectionOfMonths.selectedIndex];
 
         const timeZero = new Date(selectedYear.text, parseInt(selectedMonth.value) + 1, 0);
-        //console.log(timeZero.getDate());
-
         const arrayOfDays = Array();
 
         for (let i = 1; i <= timeZero.getDate(); i++) arrayOfDays.push(i);
@@ -325,18 +332,6 @@
 
     }
 
-    daysInMonth();
-    setCurrentDate();
-    fillCardsContent();
-
-    /*    $.each($('.card-subtitle'), function () {
-            let idString = this.id;
-            let count = parseInt(idString.charAt(idString.length - 1)) - 1;
-            let thisDate = addDays(firstDayOfWeek, count);
-            let thisDate = new Date(selectedYear.text, selectedMonth.value, parseInt(selectedDay.text));
-            this.innerHTML = (thisDate.getDate().toString()).concat(' ', arrayOfMonths[thisDate.getMonth()],
-                ' ', thisDate.getFullYear().toString());
-        });*/
 
 
     function setCurrentDate() {
@@ -347,9 +342,11 @@
     }
 
 
+/*
     var selectedDay = dayList.options[dayList.selectedIndex];
     var selectedYear = selectionOfYears.options[selectionOfYears.selectedIndex];
     var selectedMonth = selectionOfMonths.options[selectionOfMonths.selectedIndex];
+*/
 
 
     const API_URL = 'http://localhost:8080/api';
@@ -397,6 +394,7 @@
 
 
         $.each($('.card-subtitle'), function () {
+            const arrayOfMonths = moment.months();
             let idString = this.id;
             let count = parseInt(idString.charAt(idString.length - 1)) - 1;
             let thisDate = addDays(firstDayOfWeek, count);

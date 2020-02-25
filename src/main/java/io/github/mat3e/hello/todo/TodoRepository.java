@@ -7,7 +7,8 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Repository
-interface TodoRepository extends JpaRepository<Todo, Integer> {
+interface TodoRepository extends JpaRepository<Todo, Integer>, TodoRepositoryCustom{
+
 
    List<Todo> findByDate(LocalDate date);
 
