@@ -247,12 +247,13 @@
 
     <!--Prepare date selection-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
-    <!--<script src="dateSelection.js"></script>-->
+    <script src="dateSelection.js"></script>
 
 </main>
 
 <script>
 
+/*
     moment.locale('pl');
     createMonthsList();
     createYearsList();
@@ -342,11 +343,11 @@
     }
 
 
-/*
+/!*
     var selectedDay = dayList.options[dayList.selectedIndex];
     var selectedYear = selectionOfYears.options[selectionOfYears.selectedIndex];
     var selectedMonth = selectionOfMonths.options[selectionOfMonths.selectedIndex];
-*/
+*!/
 
 
     const API_URL = 'http://localhost:8080/api';
@@ -453,7 +454,7 @@
         label.appendChild(document.createTextNode(` ${todo.text}`));
         const dayOfTodo = new Date(todo.date).getDay();
 
-        const arrayOfWeekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satruday'];
+        const arrayOfWeekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const nameOfDay = (arrayOfWeekDays[dayOfTodo]).toLowerCase();
         console.log(nameOfDay);
         document.getElementById('allTodos-'.concat(nameOfDay)).appendChild(divForm);
@@ -520,6 +521,7 @@
     }
 
 
+*/
 
 </script>
 </body>

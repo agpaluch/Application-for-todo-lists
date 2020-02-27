@@ -29,8 +29,7 @@ class TodoServlet {
     ResponseEntity<List<Todo>> findAllTodos(@PathVariable Long milliseconds) {
         logger.info("Got request");
         LocalDate date = LocalDate.ofInstant(Instant.ofEpochMilli(milliseconds), ZoneId.systemDefault());
-        //return ResponseEntity.ok(todoRepository.findAll());
-        return ResponseEntity.ok(todoRepository.findByDate(date));
+        return ResponseEntity.ok(todoRepository.findByFirstDayOfWeek(date));
     }
 
     @PutMapping("/{id}")
