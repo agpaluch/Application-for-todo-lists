@@ -1,4 +1,4 @@
-package io.github.mat3e.hello.todo;
+package pl.github.agpaluch.todo;
 
 import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;

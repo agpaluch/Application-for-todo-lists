@@ -1,7 +1,7 @@
-package io.github.mat3e.hello.hello;
+package pl.github.agpaluch.hello;
 
-import io.github.mat3e.hello.lang.Lang;
-import io.github.mat3e.hello.lang.LangRepository;
+import pl.github.agpaluch.lang.Lang;
+import pl.github.agpaluch.lang.LangRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;

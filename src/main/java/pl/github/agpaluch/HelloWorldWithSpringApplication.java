@@ -1,4 +1,4 @@
-package io.github.mat3e.hello;
+package pl.github.agpaluch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

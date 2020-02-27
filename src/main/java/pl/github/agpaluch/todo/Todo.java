@@ -1,4 +1,4 @@
-package io.github.mat3e.hello.todo;
+package pl.github.agpaluch.todo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.istack.NotNull;

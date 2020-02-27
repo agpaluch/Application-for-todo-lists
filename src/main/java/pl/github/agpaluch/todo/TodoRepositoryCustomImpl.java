@@ -1,4 +1,4 @@
-package io.github.mat3e.hello.todo;
+package pl.github.agpaluch.todo;
 
 import org.springframework.stereotype.Repository;
 

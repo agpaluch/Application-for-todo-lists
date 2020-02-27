@@ -1,4 +1,4 @@
-package io.github.mat3e.hello.lang;
+package pl.github.agpaluch.lang;
 
 
 class LangDTO {

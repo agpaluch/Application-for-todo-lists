@@ -1,4 +1,4 @@
-package io.github.mat3e.hello;
+package pl.github.agpaluch;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package io.github.mat3e.hello.lang;
+package pl.github.agpaluch.lang;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

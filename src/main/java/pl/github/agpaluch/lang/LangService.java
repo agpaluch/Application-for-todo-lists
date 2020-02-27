@@ -1,4 +1,4 @@
-package io.github.mat3e.hello.lang;
+package pl.github.agpaluch.lang;
 
 
 import org.springframework.stereotype.Service;
