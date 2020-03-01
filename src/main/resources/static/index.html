@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <!--   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   -->
+    <link rel="stylesheet" href="webjars/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!--My CSS-->
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+
+    <title>To-do lists</title>
+</head>
+<body>
+
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1>Too busy to manage it all? Plan your week with to-do lists!</h1>
+        <p>No need to remember everything anymore.</p>
+    </div>
+</div>
+
+<main>
+
+    <div id="welcome" style="text-align: center">
+        <h6>Choose the date</h6>
+    </div>
+
+    <div class="container">
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 p-2">
+                <select class="custom-select" id="selectDay"></select>
+            </div>
+
+            <div class="col-md-4 p-2">
+                <select class="custom-select" id="selectMonth"></select>
+            </div>
+
+            <div class="col-md-4 p-2">
+                <select class="custom-select" id="selectYear"></select>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--    <div id="welcome" style="text-align: center">
+            <h1>Introduce yourself</h1>
+        </div>
+        <form id="welcomeForm" class="pure-form pure-g pure-form-aligned">
+            <input class="pure-input-rounded pure-u-1" name="name" placeholder="name">
+            <fieldset id="langs" class="pure-u-1 pure-control-group">Loading...</fieldset>
+            <button id="btn" class="pure-button pure-button-primary pure-u-1">Submit</button>
+        </form>-->
+
+
+    <div class="container">
+
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 px-2">
+                <div class="card my-2" id="monday">
+                    <div class="card-body">
+                        <h5 class="card-title">Monday</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle1"></h6>
+                        <form id="todoForm-monday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-monday"
+                                       placeholder="new to-do">
+                                <button class="btn btn-primary mt-1" id="addTodo-monday">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-monday" class="mt-3">
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-2">
+                <div class="card my-2" id="tuesday">
+                    <div class="card-body">
+                        <h5 class="card-title">Tuesday</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle2"></h6>
+
+                        <form id="todoForm-tuesday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-tuesday"
+                                       placeholder="new to-do">
+                                <button class="btn btn-primary mt-1" id="addTodo-tuesday">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-tuesday" class="mt-3"></fieldset>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-2">
+                <div class="card my-2" id="wednesday">
+                    <div class="card-body">
+                        <h5 class="card-title">Wednesday</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle3"></h6>
+
+                        <form id="todoForm-wednesday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-wednesday"
+                                       placeholder="new to-do">
+                                <button class="btn btn-primary mt-1" id="addTodo-wednesday">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-wednesday" class="mt-3"></fieldset>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 px-2">
+                <div class="card my-2" id="thursday">
+                    <div class="card-body">
+                        <h5 class="card-title">Thursday</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle4"></h6>
+
+                        <form id="todoForm-thursday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-thursday"
+                                       placeholder="new to-do">
+                                <button id="addTodo-thursday" class="btn btn-primary mt-1">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-thursday" class="mt-3"></fieldset>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-2">
+                <div class="card my-2" id="friday">
+                    <div class="card-body">
+                        <h5 class="card-title">Friday</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle5"></h6>
+
+                        <form id="todoForm-friday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-friday"
+                                       placeholder="new to-do">
+                                <button id="addTodo-friday" class="btn btn-primary mt-1">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-friday" class="mt-3"></fieldset>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 px-2">
+                <div class="card my-2" id="saturday">
+                    <div class="card-body">
+                        <h5 class="card-title">Saturday</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle6"></h6>
+                        <form id="todoForm-saturday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-saturday"
+                                       placeholder="new to-do">
+                                <button id="addTodo-saturday" class="btn btn-primary mt-1">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-saturday" class="mt-3"></fieldset>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-4 px-2">
+                <div class="card my-2" id="sunday">
+                    <div class="card-body">
+                        <h5 class="card-title">Sunday</h5>
+                        <h6 class="card-subtitle mb-2 text-muted text-center" id="subtitle7"></h6>
+                        <form id="todoForm-sunday" class="form-inline">
+                            <div class="row justify-content-center">
+                                <input type="text" class="form-control w-75 mr-1 mt-1" id="todoText-sunday"
+                                       placeholder="new to-do">
+                                <button id="addTodo-sunday" class="btn btn-primary mt-1">Add</button>
+                            </div>
+                        </form>
+
+                        <fieldset id="allTodos-sunday" class="mt-3">
+
+
+                        </fieldset>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript-->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="webjars/jquery/3.4.1/jquery.min.js"></script>
+    <script src="webjars/popper.js/1.16.0/popper.min.js"></script>
+    <script src="webjars/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+    <!--Prepare date selection-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="dateSelection.js"></script>
+
+</main>
+
+</body>
+</html>
+
+
+
+
+

@@ -9,6 +9,7 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 
 @RestController
@@ -27,13 +28,14 @@ class TodoServlet {
     @GetMapping("/{milliseconds}")
     ResponseEntity<List<Todo>> findAllTodos(@PathVariable Long milliseconds) {
         logger.info("Got request");
-        LocalDate date = LocalDate.ofInstant(Instant.ofEpochMilli(milliseconds), ZoneId.systemDefault());
+        LocalDate date = Instant.ofEpochMilli(milliseconds).atZone(ZoneId.systemDefault()).toLocalDate();
         return ResponseEntity.ok(todoRepository.findByFirstDayOfWeek(date));
     }
 
     @PutMapping("/{id}")
     ResponseEntity<Todo> toggleTodo(@PathVariable Integer id) {
-        var todo = todoRepository.findById(id);
+        logger.info("Got put request");
+        Optional<Todo> todo = todoRepository.findById(id);
         todo.ifPresent(t -> {
             t.setDone(!t.isDone());
             todoRepository.save(t);

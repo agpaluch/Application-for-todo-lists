@@ -1,10 +1,10 @@
 package pl.github.agpaluch.hello;
 
-import pl.github.agpaluch.lang.Lang;
-import pl.github.agpaluch.lang.LangRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import pl.github.agpaluch.lang.Lang;
+import pl.github.agpaluch.lang.LangRepository;
 
 import java.util.Optional;
 
@@ -26,10 +26,10 @@ class HelloService {
 
         langId = Optional.ofNullable(langId).orElse(FALLBACK_LANG.getId());
 
-        var welcomeMsg = repository.findById(langId)
+        String welcomeMsg = repository.findById(langId)
                 .orElse(FALLBACK_LANG).getWelcomeMsg();
 
-        var nameToWelcome = Optional.ofNullable(name)
+        String nameToWelcome = Optional.ofNullable(name)
                 .orElse(FALLBACK_NAME);
         return welcomeMsg + " " + nameToWelcome + "!";
 

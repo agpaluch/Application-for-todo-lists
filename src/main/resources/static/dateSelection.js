@@ -1,3 +1,4 @@
+
 moment.locale('pl');
 createMonthsList();
 createYearsList();
@@ -10,6 +11,45 @@ daysInMonth();
 setCurrentDate();
 fillCardsContent();
 
+/*const API_URL =  'http://to-do-lists.eu-central-1.elasticbeanstalk.com/api';*/
+const API_URL = 'http://localhost:8080/api';
+const TODO_API_URL = `${API_URL}/todos`;
+
+
+$('#selectDay, #selectMonth, #selectYear').on('change', fillCardsContent);
+
+//Add new todo
+(function () {
+
+    $.each($('.card'), function () {
+        const dayOfWeek = this.id;
+
+        const addTodoButton = document.getElementById('addTodo-'.concat(dayOfWeek));
+        const todoText = document.getElementById('todoText-'.concat(dayOfWeek));
+        const dateOfDayString = $(this).children().children('.card-subtitle').html().toString();
+        const dateOfDay = new Date(dateOfDayString);
+        let dateString = formatDate(dateOfDay);
+
+        addTodoButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            fetch(TODO_API_URL, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+
+                body: JSON.stringify({text: todoText.value, date: dateString})
+            })
+                .then(processOkResponse)
+                .then(createNewTodo)
+                .then(() => todoText.value = '')
+                .catch(console.warn);
+        });
+
+
+    })
+})();
 
 //Create list of month names
 function createMonthsList(){
@@ -87,18 +127,7 @@ function setCurrentDate() {
 }
 
 
-/*
-    var selectedDay = dayList.options[dayList.selectedIndex];
-    var selectedYear = selectionOfYears.options[selectionOfYears.selectedIndex];
-    var selectedMonth = selectionOfMonths.options[selectionOfMonths.selectedIndex];
-*/
 
-
-const API_URL = 'http://localhost:8080/api';
-const TODO_API_URL = `${API_URL}/todos`;
-
-
-$('#selectDay, #selectMonth, #selectYear').on('change', fillCardsContent);
 
 
 function fillCardsContent() {
@@ -147,7 +176,6 @@ function fillCardsContent() {
             ' ', thisDate.getFullYear().toString());
         const parentCard = this.parentElement.parentElement;
         if (thisDate.getTime() === chosenDate.getTime()) {
-            //$(this).parent().parent('.card').css("background-color", "palevioletred");
             parentCard.classList.add('current');
         } else {
             parentCard.classList.remove('current');
@@ -156,7 +184,9 @@ function fillCardsContent() {
     });
 
     const firstDayOfWeekMiliseconds = +firstDayOfWeek;
-
+/*
+    const API_URL =  'http://to-do-lists.eu-central-1.elasticbeanstalk.com/api';
+*/
     const API_URL = 'http://localhost:8080/api';
     const TODO_API_URL = `${API_URL}/todos`;
 
@@ -166,6 +196,7 @@ function fillCardsContent() {
 
 
 }
+
 
 function createNewTodo(todo) {
     const divForm = document.createElement('div');
@@ -206,41 +237,6 @@ function createNewTodo(todo) {
 }
 
 
-//Add new todo
-(function () {
-
-    $.each($('.card'), function () {
-        const dayOfWeek = this.id;
-
-        const addTodoButton = document.getElementById('addTodo-'.concat(dayOfWeek));
-        const todoText = document.getElementById('todoText-'.concat(dayOfWeek));
-        const dateOfDayString = $(this).children().children('.card-subtitle').html().toString();
-        //console.log(new Date('26 January 2014'));
-        //console.log(dateOfDay);
-        const dateOfDay = new Date(dateOfDayString);
-        //'2019-01-01'
-        let dateString = formatDate(dateOfDay);
-
-        addTodoButton.addEventListener('click', (event) => {
-            event.preventDefault();
-            fetch(TODO_API_URL, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-
-                body: JSON.stringify({text: todoText.value, date: dateString})
-            })
-                .then(processOkResponse)
-                .then(createNewTodo)
-                .then(() => todoText.value = '')
-                .catch(console.warn);
-        });
-
-
-    })
-})();
 
 function processOkResponse(response = {}) {
     if (response.ok) {
@@ -263,5 +259,4 @@ function formatDate(dateToFormat) {
     }
     return (yyyy + '-' + mm + '-' + dd);
 }
-
 
