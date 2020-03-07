@@ -11,7 +11,7 @@ daysInMonth();
 setCurrentDate();
 fillCardsContent();
 
-/*const API_URL =  'http://to-do-lists.eu-central-1.elasticbeanstalk.com/api';*/
+/*const API_URL =  'http://to-do-list.eu-central-1.elasticbeanstalk.com/api';*/
 const API_URL = 'http://localhost:8080/api';
 const TODO_API_URL = `${API_URL}/todos`;
 
@@ -121,7 +121,7 @@ function daysInMonth() {
 
 function setCurrentDate() {
     let currentDate = new Date();
-    dayList.selectedIndex = currentDate.getDate();
+    dayList.selectedIndex = currentDate.getDate()-1;
     selectionOfMonths.selectedIndex = currentDate.getMonth();
     selectionOfYears.selectedIndex = selectionOfYears.childElementCount - 1;
 }
@@ -184,9 +184,8 @@ function fillCardsContent() {
     });
 
     const firstDayOfWeekMiliseconds = +firstDayOfWeek;
-/*
-    const API_URL =  'http://to-do-lists.eu-central-1.elasticbeanstalk.com/api';
-*/
+
+    /*const API_URL =  'http://to-do-list.eu-central-1.elasticbeanstalk.com/api';*/
     const API_URL = 'http://localhost:8080/api';
     const TODO_API_URL = `${API_URL}/todos`;
 
